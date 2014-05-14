@@ -1,0 +1,49 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets%}
+
+{{ parent() }}
+
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/core/css/main.css') }}" />
+      
+{% endblock %}
+
+{% block body %}
+
+
+
+{% block header %}
+
+<header >
+    <div class="page-header" >
+        <h1>
+            {{ 'header' | trans }}
+        </h1>
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a href="#">  {{ 'home' |trans }} </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <div class="col-lg-9">
+        <section>
+            {% block section %}{% endblock %}
+        </section>
+    </div>
+    <div class="col-lg-3">
+        {% endblock %}{% block sidebar %}
+
+        {% endblock %}
+    </div>
+</div>
+<footer>
+    <div id="footer" >
+        <p> {{ 'now' | date('Y') }} Symfony2 Blog </p>
+    </div>
+</footer>
+{% endblock %}
