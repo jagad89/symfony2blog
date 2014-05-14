@@ -5,6 +5,15 @@ use Doctrine\ORM\EntityRepository;
 
 class PostRepository extends EntityRepository {
     
+    protected function getQueryBuilder()
+    {
+        $qb = $this->getEntityManager()
+                ->getRepository('ModelBundle:Post')
+                ->createQueryBuilder('p');
+        
+        return $qb;
+    }
+    
     /**
      * 
      * @param integer $num
@@ -18,12 +27,12 @@ class PostRepository extends EntityRepository {
         return $qb->getQuery()->getResult();
     }
     
-    protected function getQueryBuilder()
+    public function findFirst()
     {
-        $qb = $this->getEntityManager()
-                ->getRepository('ModelBundle:Post')
-                ->createQueryBuilder('p');
+        $qb = $this->getQueryBuilder()
+             ->orderBy('p.id','asc')
+             ->setMaxResults(1);
         
-        return $qb;
+        return $qb->getQuery()->getSingleResult();                
     }
 }

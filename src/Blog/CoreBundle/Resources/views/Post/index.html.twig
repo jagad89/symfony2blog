@@ -8,7 +8,7 @@
         {{ 'post.latests' | trans }}
         
         {% for post in latestposts %}
-        <p><a href="#">{{ post.title }}</a></p>
+        <p><a href="{{ path('blog_post_show',{'slug':post.slug}) }}">{{ post.title }}</a></p>
         {% endfor %}
     </h3>
 </aside>

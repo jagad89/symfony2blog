@@ -4,6 +4,7 @@ namespace Blog\ModelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Post
@@ -30,6 +31,15 @@ class Post extends TimeStampable
      */
     private $title;
 
+    /**
+     *
+     * @var string
+     * 
+     * @Gedmo\Slug( fields={"title"}, unique=false)
+     * @ORM\Column(name="slug", type="string", length=200)
+     * @Assert\NotBlank
+     */
+    private $slug;
     /**
      * @var string
      *
@@ -123,5 +133,28 @@ class Post extends TimeStampable
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Post
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

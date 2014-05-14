@@ -9,6 +9,7 @@
 namespace Blog\ModelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Description of TimeStampable
@@ -19,15 +20,17 @@ abstract class TimeStampable {
     
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
-
-
-    public function __construct() {
-        $this->createdAt = new \DateTime();
-    }
+    
+    /**
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
     
     /**
      * Set createdAt
@@ -50,5 +53,28 @@ abstract class TimeStampable {
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+    
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $createdAt
+     * @return TimeStampable
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
