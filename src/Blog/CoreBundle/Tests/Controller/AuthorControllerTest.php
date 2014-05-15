@@ -26,7 +26,7 @@ class AuthorControllerTest extends WebTestCase
                 'Author show fails.');
         
         $this->assertCount($authorPostsCount, $crawler->filter('h2')->count(),
-                'Author posts count miss match.');
+                'Author posts count not matched.');
     }
 
 }
