@@ -17,6 +17,7 @@ class AuthorControllerTest extends WebTestCase
                 ->getRepository('ModelBundle:Author')
                 ->findFirst();
         
+        
         $crawler = $client->request('GET', '/author/'.$author->getSlug());
         
         $authorPostsCount = $author->getPosts()->count();
