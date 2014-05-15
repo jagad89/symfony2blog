@@ -32,6 +32,11 @@ class PostControllerTest extends WebTestCase
         
         $this->assertTrue($client->getResponse()->isSuccessful(),'Responce not successful');
         $this->assertEquals($post->getTitle(), $crawler->filter('h1')->text(),'Title mis match');
+        $this->assertGreaterThanOrEqual(1, $crawler->filter('artical.comment')->count(),'No comment for post');
+    }
+    
+    public function testCreateComment()
+    {
         
     }
 }

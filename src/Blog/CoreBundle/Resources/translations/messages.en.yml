@@ -1,7 +1,13 @@
+author: Author
 header: Symfony2 blog
 home: Home
 post:
-    on: On
+    on: Poseted On
     latests: Latest Posts
+    by: Posts by
 by: by
+comment:
+    plural: Comments
+author:
+    empty.posts: 'No Post found'
 read.more: Read More

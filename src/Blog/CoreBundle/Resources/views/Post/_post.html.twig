@@ -3,7 +3,8 @@
         <h2><a href="{{ path('blog_post_show',{'slug':post.slug}) }}">{{ post.title }}</a></h2>
         <p>
             {{ 'post.on' | trans }}&nbsp;<time datetime="{{ post.createdAt | date('c')}}">{{ post.createdAt | date('c')}} </time>&nbsp;
-            {{ 'by' | trans }} {{ post.author.name }}
+            {{ 'by' | trans }} 
+            <a href ="{{ path("blog_core_author_show", {'slug':post.author.slug}) }}" title="{{ 'post.by.author' | trans({'%name%':post.author.name }) }}">{{ post.author.name }}</a>
         
         </p>
     </header>
